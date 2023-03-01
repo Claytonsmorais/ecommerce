@@ -33,7 +33,7 @@ class CarrinhoViewSet(ViewSet):
                             try:
                                 ProdutoNoCarrinho.objects.create(produto=Produto.objects.get(id=x.get('id')),
                                                                  quantidade=x.get('quantidade'),
-                                                                 carrinho=existente)
+                                                                 carrinho=existente).save()
 
                             except Produto.DoesNotExist:
                                 raise APIException(detail=f'Não existe um produto com o id :{x.get("id")}')
